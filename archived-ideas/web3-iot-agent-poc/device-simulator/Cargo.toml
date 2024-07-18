@@ -1,0 +1,13 @@
+[workspace]
+members = [
+    "src/actions",
+    "src/collector",
+    "src/comm",
+    "src/core",
+    "src/helpers",
+    "src/launcher", # Get Clap and toml parameters (iot-device-simulator.toml)
+]
+
+[workspace.metadata.program]
+name = "iot-device-simulator"
+version = "0.1.1"

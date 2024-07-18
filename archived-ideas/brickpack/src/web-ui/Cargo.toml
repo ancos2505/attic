@@ -1,0 +1,13 @@
+[package]
+publish = false
+edition = "2021"
+rust-version = "1.69.0"
+
+name = "web-ui"
+version = "0.0.1"
+
+authors = ["http://github.com/ancos2505"]
+license = "MIT"
+
+
+[dependencies]

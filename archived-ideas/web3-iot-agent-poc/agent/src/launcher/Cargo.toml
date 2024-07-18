@@ -1,0 +1,9 @@
+[package]
+edition = "2021"
+name = "launcher"
+version = "0.1.0"
+publish = false
+
+[dependencies]
+core = { path = "../core" }
+helpers = { path = "../helpers" }

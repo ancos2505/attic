@@ -1,0 +1,197 @@
+{
+    "projectName": "IotDeviceWeb3",
+    "Pages": [
+        {
+            "name": "generalStatus",
+            "alerts": [
+                {
+                    "name": "isUserConnected",
+                    "data": true
+                },
+                {
+                    "name": "isBoardConnected",
+                    "data": true
+                },
+                {
+                    "name": "areDataWithinThreshold",
+                    "data": true
+                },
+                {
+                    "name": "isSystemHealthy",
+                    "data": true
+                }
+            ],
+            "uptime": [
+                {
+                    "name": "overall",
+                    "uptime_secs": 200
+                },
+                {
+                    "name": "unit_1",
+                    "uptime_secs": 130
+                },
+                {
+                    "name": "unit_2",
+                    "uptime_secs": 70
+                }
+            ],
+            "downtime": [
+                {
+                    "name": "overall",
+                    "uptime_secs": 200
+                },
+                {
+                    "name": "unit_1",
+                    "uptime_secs": 130
+                },
+                {
+                    "name": "unit_2",
+                    "uptime_secs": 70
+                }
+            ],
+            "hardwareUnits": [
+                {
+                    "name": "unit1",
+                    "status": [
+                        {
+                            "name": "waterFlow",
+                            "states": [
+                                "ON",
+                                "OFF"
+                            ]
+                        },
+                        {
+                            "name": "magneticField",
+                            "states": [
+                                "ON",
+                                "OFF"
+                            ]
+                        },
+                        {
+                            "name": "currentTemperature",
+                            "data": 35.2
+                        },
+                        {
+                            "name": "averageTemperature",
+                            "data": 35.2
+                        },
+                        {
+                            "name": "currentLoadPercent",
+                            "data": 82
+                        },
+                        {
+                            "name": "averageLoadPercent",
+                            "data": 17
+                        },
+                        {
+                            "name": "currentAmps",
+                            "data": 35.2
+                        },
+                        {
+                            "name": "averageAmps",
+                            "data": 35.2
+                        },
+                        {
+                            "name": "currentVolts",
+                            "data": 35.2
+                        },
+                        {
+                            "name": "averageVolts",
+                            "data": 35.2
+                        }
+                    ]
+                },
+                {
+                    "name": "unit2",
+                    "status": [
+                        {
+                            "name": "waterFlow",
+                            "states": [
+                                "ON",
+                                "OFF"
+                            ]
+                        },
+                        {
+                            "name": "magneticField",
+                            "states": [
+                                "ON",
+                                "OFF"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Events",
+            "data": [
+                "REBOOT",
+                "REBOOT fails"
+            ]
+        },
+        {
+            "name": "Alerts",
+            "data": [
+                {
+                    "name": "isUserConnected",
+                    "data": true
+                },
+                {
+                    "name": "isBoardConnected",
+                    "data": true
+                },
+                {
+                    "name": "areDataWithinThreshold",
+                    "data": true
+                },
+                {
+                    "name": "isSystemHealthy",
+                    "data": true
+                }
+            ]
+        },
+        {
+            "name": "Actions",
+            "hardwareUnits": [
+                {
+                    "name": "unit1",
+                    "status": [
+                        {
+                            "name": "waterFlow",
+                            "states": [
+                                "ON",
+                                "OFF"
+                            ]
+                        },
+                        {
+                            "name": "magneticField",
+                            "states": [
+                                "ON",
+                                "OFF"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "unit2",
+                    "status": [
+                        {
+                            "name": "waterFlow",
+                            "states": [
+                                "ON",
+                                "OFF"
+                            ]
+                        },
+                        {
+                            "name": "magneticField",
+                            "states": [
+                                "ON",
+                                "OFF"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+[package]
+name = "hn-masonry"
+version = "0.0.3"
+edition = "2021"
+authors = ["ancos2505<https://github.com/ancos2505>"]
+
+[dependencies]
+anyhow = "1.0.86"
+accesskit = "0.15.0"
+masonry = { git = "https://github.com/linebender/xilem", branch = "main" }
+smallvec = "1.13.2"
+tracing = "0.1.40"
+vello = "0.2.0"
+winit = "0.30.3"

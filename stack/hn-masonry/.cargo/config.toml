@@ -1,0 +1,13 @@
+[net]
+offline = true   
+
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/linebender/xilem?branch=main"]
+git = "https://github.com/linebender/xilem"
+branch = "main"
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"

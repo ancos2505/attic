@@ -1,0 +1,53 @@
+CURRENT_USER := `whoami`
+
+DIST_FOLDER := "./distrib"
+
+_default:
+    just -l
+
+_pre-build:
+    @mkdir -vp {{DIST_FOLDER}}
+
+_agent:
+    just ./agent/ build
+
+_device-simulator:
+    just ./device-simulator/ build
+
+build: _pre-build _agent _device-simulator
+    @cp -v ./agent/dist/* {{DIST_FOLDER}}/
+    @cp -v ./device-simulator/dist/* {{DIST_FOLDER}}/
+
+code:
+   @echo "Firtly you need to enter in a project:"
+   @echo 
+   @echo "   Ex: cd agent ; just code"
+   @echo 
+   @echo "        or"
+   @echo 
+   @echo "   Ex: cd device-simulator ; just code"
+   @echo 
+
+clean:
+   just ./agent/ clean
+   just ./device-simulator/ clean
+   rm -ri {{DIST_FOLDER}}
+
+serial:
+    @echo -n "Creating serial ports: [ /dev/ttyS10, /dev/ttyS11 ]..."
+    @sudo bash -c "nohup socat PTY,link=/dev/ttyS10 PTY,link=/dev/ttyS11 &> /dev/null &"
+    @sleep 2
+    @sudo chown {{CURRENT_USER}} /dev/ttyS10
+    @sudo chown {{CURRENT_USER}} /dev/ttyS11
+    
+    @echo "[Ok]"
+    
+    @echo 'To simulate:'
+    @echo "Terminal 1: picocom --echo --omap crcrlf --emap crcrlf /dev/ttyS10"
+    @echo "Terminal 2: picocom --echo --omap crcrlf --emap crcrlf /dev/ttyS11"
+
+start-simulate: serial
+
+stop-simulate:
+    @for p in `ps -ef | grep -v 'grep' | grep 'socat' | awk '{print $2}'`; do sudo bash -c "kill $p &> /dev/null" ; done
+    @rm -f nohup.out

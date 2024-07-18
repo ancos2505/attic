@@ -1,0 +1,9 @@
+[package]
+name = "comm"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serialport = { version = "4.2.0", features = ["serde"] }
+helpers = { path = "../helpers" }
+anyhow = "*"

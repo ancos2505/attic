@@ -1,0 +1,9 @@
+[package]
+name = "html-parser"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+markup5ever = "0.12.1"
+scraper = "0.19.0"

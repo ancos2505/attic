@@ -1,0 +1,27 @@
+{
+	"name": "Rust playground",
+	"image": "mcr.microsoft.com/devcontainers/rust:0-1-bullseye",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"cschleiden.vscode-github-actions",
+				"ms-vsliveshare.vsliveshare",
+				"github.vscode-github-actions"
+			],
+			"settings": {
+				"explorer.compactFolders": false,
+				"editor.rulers": [
+					80
+				],
+				"workbench.colorTheme": "Default Dark+",
+				"workbench.preferredDarkColorTheme": "Monokai",
+				"workbench.colorCustomizations": {
+					"editorRuler.foreground": "#5f5f62"
+				},
+				"[json]": {
+					"editor.defaultFormatter": "vscode.json-language-features"
+				}
+			}
+		}
+	}
+}

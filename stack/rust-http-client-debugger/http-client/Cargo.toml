@@ -1,0 +1,21 @@
+[package]
+name = "my-client"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.75"
+jaq-core = "1.2.0"
+jaq-interpret = "1.2.0"
+jaq-parse = "1.0.1"
+jaq-std = "1.2.0"
+reqwest = { version = "0.11.22", features = [
+    "tokio-rustls",
+    "rustls-tls",
+    "json",
+    # "cookies",
+], default-features = false }
+serde_json = "1.0.108"
+tokio = { version = "1.34.0", features = ["full"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }

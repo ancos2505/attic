@@ -1,0 +1,56 @@
+name: kernel_build
+on:
+  push:
+    tags:
+    - '*'
+jobs:
+  kernel:
+    runs-on: ubuntu-latest
+    env:
+      CURRENT_KERNEL_VERSION: 6.8.1
+      BUILD_LOG: build.log
+    strategy:
+      matrix:
+        buildconfig:  [
+                        defconfig
+                      # , allnoconfig
+                      ]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set env
+      run: echo "MAKEFLAGS=-j$(nproc)" >> $GITHUB_ENV
+    - name: Check environment settings
+      run: | 
+        env
+        echo "MAKEFLAGS: [${MAKEFLAGS}]"
+        pwd
+    - name: install dependencies
+      run: | 
+        sudo apt-get install -y build-essential git libncurses-dev gawk flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf llvm
+    - name: Download kernel
+      run: |
+        wget -c https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${{env.CURRENT_KERNEL_VERSION}}.tar.xz
+        wget -c https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${{env.CURRENT_KERNEL_VERSION}}.tar.sign
+    - name: Verify gpg
+      run: |
+        gpg -v --keyserver hkps://keyserver.ubuntu.com --recv-keys 647F28654894E3BD457199BE38DBBDC86092693E
+        xzcat linux-${{env.CURRENT_KERNEL_VERSION}}.tar.xz | gpg --verify linux-${{env.CURRENT_KERNEL_VERSION}}.tar.sign -
+    - name: uncompress kernel
+      run: |
+        tar -xvf linux-${{env.CURRENT_KERNEL_VERSION}}.tar.xz
+    - name: build kernel
+      run: |
+        cd linux-${{env.CURRENT_KERNEL_VERSION}} &&
+        make ${{matrix.buildconfig}} &&
+        make 2>&1 | tee kernel-${{env.BUILD_LOG}}
+        cd arch/x86/boot/
+        mkinitramfs -o initrd.img-${{env.CURRENT_KERNEL_VERSION}} 2>&1 | tee ../../../initrd-${{env.BUILD_LOG}}
+    - uses: actions/upload-artifact@v4
+      with:
+        name: linux-image-${{env.CURRENT_KERNEL_VERSION}}
+        path: |
+          ./linux-${{env.CURRENT_KERNEL_VERSION}}/arch/x86/boot/bzImage
+          ./linux-${{env.CURRENT_KERNEL_VERSION}}/arch/x86/boot/initrd.img-${{env.CURRENT_KERNEL_VERSION}}
+          ./linux-${{env.CURRENT_KERNEL_VERSION}}/kernel-${{env.BUILD_LOG}}
+          ./linux-${{env.CURRENT_KERNEL_VERSION}}/initrd-${{env.BUILD_LOG}}
+        retention-days: 7

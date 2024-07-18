@@ -1,0 +1,9 @@
+[workspace]
+default-members = ["launcher"]
+members = ["launcher", "part1"]
+
+[workspace.package]
+name = "stamp-coin"
+
+[profile.release]
+strip = true

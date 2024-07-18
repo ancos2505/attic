@@ -1,0 +1,10 @@
+[package]
+name = "quicknet_core"
+version = "0.1.1"
+authors = ["https://github.com/ancos2505"]
+edition = "2018"
+
+
+[dependencies]
+
+nanorand = "0.5.1"

@@ -1,0 +1,10 @@
+[package]
+edition = "2021"
+name = "helpers"
+version = "0.1.0"
+publish = false
+
+[dependencies]
+anyhow = "1.0.62"
+crossbeam-channel = "0.5.6"
+ctrlc = "3.2.3"

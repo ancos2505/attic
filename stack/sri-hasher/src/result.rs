@@ -1,0 +1,1 @@
+pub type LibResult<T> = anyhow::Result<T>;

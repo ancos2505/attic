@@ -1,0 +1,10 @@
+[package]
+name = "principal"
+version = "0.1.0"
+authors = ["https://github.com/ancos2505"]
+edition = "2018"
+
+
+[dependencies]
+dlopen = "0.1.8"
+dlopen_derive = "0.1.4"

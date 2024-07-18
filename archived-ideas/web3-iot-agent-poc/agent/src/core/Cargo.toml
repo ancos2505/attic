@@ -1,0 +1,18 @@
+[package]
+edition = "2021"
+name = "core"
+version = "0.1.0"
+publish = false
+
+
+[dependencies]
+clap = { version = "3.2.17", features = ["derive"] }
+humantime = "2.1.0"
+
+anyhow = "*"
+crossbeam-channel = "*"
+
+
+helpers = { path = "../helpers" }
+serialport-listener = { path = "../serialport-listener" }
+

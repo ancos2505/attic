@@ -1,0 +1,14 @@
+[package]
+name = "relm4-morse"
+version = "0.0.8"
+edition = "2021"
+
+## Debian GTK4 dependencies
+# sudo apt update && sudo apt install libgtk-4-dev libadwaita-1-dev -y
+
+
+[dependencies]
+relm4 = "0.8.1"
+relm4-components = "0.8.1"
+relm4-icons = "0.8.2"
+

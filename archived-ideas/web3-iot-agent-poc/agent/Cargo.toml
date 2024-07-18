@@ -1,0 +1,15 @@
+[workspace]
+members = [
+    "src/actions",
+    "src/collector",
+    "src/serialport-listener",
+    "src/core",
+    "src/helpers",
+    "src/launcher", # Get Clap and toml parameters (device-agent.toml)
+    "src/sc-agent",
+    "src/types",
+]
+
+[workspace.metadata.program]
+name = "device-agent"
+version = "0.1.1"

@@ -1,0 +1,64 @@
+PACKAGE_NAME := `awk 'BEGIN{is_inside_package=0}/^\[workspace.metadata.program\]/{is_inside_package=1}/name.*=/{if(is_inside_package){is_inside_package=0;print}}' Cargo.toml | cut -d '"' -f 2`
+PACKAGE_VERSION := `awk 'BEGIN{is_inside_package=0}/^\[workspace.metadata.program\]/{is_inside_package=1}/version.*=/{if(is_inside_package){is_inside_package=0;print}}' Cargo.toml | cut -d '"' -f 2`
+CURRENT_USER := `whoami`
+RUST_TARGET := "x86_64-unknown-linux-musl"
+
+TARGET_FOLDER := "./target"
+DIST_FOLDER := "./dist"
+
+_default:
+    just -l
+
+code:
+    @PACKAGE_NAME={{PACKAGE_NAME}} PACKAGE_VERSION={{PACKAGE_VERSION}} code .
+
+check:
+    @PACKAGE_NAME={{PACKAGE_NAME}} PACKAGE_VERSION={{PACKAGE_VERSION}} cargo check --release --target={{RUST_TARGET}}
+
+build:
+    @mkdir -p {{DIST_FOLDER}}/
+    @printf "Building [%s v%s]...\n" {{PACKAGE_NAME}} {{PACKAGE_VERSION}}
+    @PACKAGE_NAME={{PACKAGE_NAME}} PACKAGE_VERSION={{PACKAGE_VERSION}} cargo build --release --target={{RUST_TARGET}}
+    @cp -v {{TARGET_FOLDER}}/{{RUST_TARGET}}/release/launcher {{DIST_FOLDER}}/{{PACKAGE_NAME}}
+
+run: build
+    {{DIST_FOLDER}}/{{PACKAGE_NAME}}
+
+run-test TEST:
+    cargo test --test {{TEST}}
+
+debug TEST:
+    cargo test --test {{TEST}} --features debug
+
+run-tests:
+    cargo test --all
+
+bench:
+    cargo +nightly bench -p core --features benchmarks
+
+lint:
+    cargo clippy
+
+clean:
+    cargo clean
+    rm -ri {{DIST_FOLDER}}
+    
+
+serial:
+    @echo -n "Creating serial ports: [ /dev/ttyS10, /dev/ttyS11 ]..."
+    @sudo bash -c "nohup socat PTY,link=/dev/ttyS10 PTY,link=/dev/ttyS11 &> /dev/null &"
+    @sleep 2
+    @sudo chown {{CURRENT_USER}} /dev/ttyS10
+    @sudo chown {{CURRENT_USER}} /dev/ttyS11
+    
+    @echo "[Ok]"
+    
+    @echo 'To simulate:'
+    @echo "Terminal 1: picocom --echo --omap crcrlf --emap crcrlf /dev/ttyS10"
+    @echo "Terminal 2: picocom --echo --omap crcrlf --emap crcrlf /dev/ttyS11"
+
+start-simulate: serial
+
+stop-simulate:
+    @for p in `ps -ef | grep -v 'grep' | grep 'socat' | awk '{print $2}'`; do sudo bash -c "kill $p &> /dev/null" ; done
+    @rm -f nohup.out

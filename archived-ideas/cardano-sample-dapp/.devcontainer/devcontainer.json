@@ -1,0 +1,35 @@
+{
+	"name": "Cardano Sample dApp by http://github.com/ancos2505",
+	"image": "mcr.microsoft.com/devcontainers/rust:latest",
+	// "postCreateCommand": "sh .devcontainer/install_tooling.sh",
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/devcontainers-contrib/features/deno:1": {}
+	},
+	"extensions": [
+		"cschleiden.vscode-github-actions",
+		"ms-vsliveshare.vsliveshare",
+		"vadimcn.vscode-lldb",
+		"matklad.rust-analyzer",
+		"serayuzgur.crates",
+		"tamasfe.even-better-toml",
+		"usernamehw.errorlens",
+		"aaron-bond.better-comments",
+		"yzhang.markdown-all-in-one",
+		"svelte.svelte-vscode",
+		"TxPipe.aiken"
+	],
+	"settings": {
+		"explorer.compactFolders": false,
+		"editor.rulers": [
+			80
+		],
+		"workbench.colorTheme": "Default Dark+",
+		"workbench.preferredDarkColorTheme": "Monokai",
+		"workbench.colorCustomizations": {
+			"editorRuler.foreground": "#5f5f62"
+		},
+		"workbench.activityBar.location": "top"
+	}
+}

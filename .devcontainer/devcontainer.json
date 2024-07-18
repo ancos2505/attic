@@ -1,0 +1,28 @@
+{
+	"name": "github.com/ancos2505/attic",
+	"image": "mcr.microsoft.com/devcontainers/rust:latest",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+	},
+	"extensions": [
+		"GitHub.vscode-github-actions",
+		"ms-vsliveshare.vsliveshare",
+		"edwinhuish.better-comments-next",
+		"tamasfe.even-better-toml",
+		"rust-lang.rust-analyzer",
+		"nefrob.vscode-just-syntax"
+	],
+	"settings": {
+		"explorer.compactFolders": false,
+		"editor.rulers": [
+			80
+		],
+		"workbench.colorTheme": "Default Dark+",
+		"workbench.preferredDarkColorTheme": "Monokai",
+		"workbench.colorCustomizations": {
+			"editorRuler.foreground": "#5f5f62"
+		},
+		"workbench.activityBar.location": "top"
+	}
+}

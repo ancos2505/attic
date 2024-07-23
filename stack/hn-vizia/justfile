@@ -1,0 +1,33 @@
+DIST_DIR:= "./dist"
+
+PKG_NAME:= `awk '/name/{print $3}' Cargo.toml | tr -d '"'`
+
+_default: help
+
+# This Task
+help:
+  @just -l
+
+
+_pre-build:
+	@mkdir -p {{DIST_DIR}}
+
+
+_post-build:
+	@strip ./target/release/{{PKG_NAME}}
+	@cp -v ./target/release/{{PKG_NAME}} {{DIST_DIR}}/release/
+	@ls -lh {{DIST_DIR}}/release/
+
+# Build the Application
+build: _pre-build && _post-build
+	@mkdir -p {{DIST_DIR}}/release
+	cargo build --release
+
+# Run the Application
+run:
+	cargo run
+
+# Clean temporary files for building
+clean:
+	@rm -rfv {{DIST_DIR}}
+	@cargo clean

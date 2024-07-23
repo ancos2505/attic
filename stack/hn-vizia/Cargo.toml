@@ -1,0 +1,18 @@
+[package]
+name = "hn-vizia"
+version = "0.0.7"
+edition = "2021"
+authors = ["ancos2505<https://github.com/ancos2505>"]
+description = "Experimental desktop client for Hackernews"
+
+[dependencies]
+anyhow = "1.0.86"
+chrono = { version = "0.4.38", features = ["serde"] }
+lazy_static = "1.5.0"
+reqwest = { version = "0.12.5", features = ["json", "blocking"] }
+serde = { version = "1.0.204", features = ["derive"] }
+serde_json = "1.0.120"
+timeago = "0.4.2"
+url = { version = "2.5.2", features = ["serde"] }
+vizia = { git = "https://github.com/vizia/vizia", version = "0.1.0" }
+vizia_derive = { git = "https://github.com/vizia/vizia", version = "0.1.0" }

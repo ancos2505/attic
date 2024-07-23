@@ -1,0 +1,22 @@
+# [net]
+# offline = true
+
+# [source.crates-io]
+# replace-with = "vendored-sources"
+
+# [source."git+https://github.com/pop-os/cosmic-text?rev=19b4d8336e34073bb51b83578d3d803c8c953787"]
+# git = "https://github.com/pop-os/cosmic-text"
+# rev = "19b4d8336e34073bb51b83578d3d803c8c953787"
+# replace-with = "vendored-sources"
+
+# [source."git+https://github.com/vizia/morphorm.git?branch=auto-min-size2"]
+# git = "https://github.com/vizia/morphorm.git"
+# branch = "auto-min-size2"
+# replace-with = "vendored-sources"
+
+# [source."git+https://github.com/vizia/vizia"]
+# git = "https://github.com/vizia/vizia"
+# replace-with = "vendored-sources"
+
+# [source.vendored-sources]
+# directory = "vendor"

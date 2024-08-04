@@ -1,0 +1,10 @@
+[package]
+edition = "2021"
+rust-version = "1.80.0"
+name = "{{project-name}}"
+version = "0.0.1"
+authors = ["{{authors}}"]
+
+
+[dependencies]
+anyhow = "1"

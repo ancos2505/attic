@@ -1,0 +1,17 @@
+[package]
+name = "masonry-template"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+image = "0.25.2"
+masonry = { git = "https://github.com/linebender/xilem.git", rev = "101fa9b" }
+parley = "0.1.0"
+smallvec = "1.13.2"
+tracing = "0.1.40"
+winit = "0.30.4"
+
+[dev-dependencies]
+accesskit = "0.16.0"
+kurbo = "0.11.0"
+vello = "0.2.1"

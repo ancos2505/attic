@@ -5,8 +5,28 @@ const FONT_WEIGHT = 33;
 
 const MAX_STR_SIZE = 37;
 document.addEventListener("DOMContentLoaded", function () {
+    function line(line) {
+        return START_WIDTH + (FONT_SIZE * (line - 1))
+    }
+    function column(col) {
+        return START_HEIGHT - (FONT_WEIGHT * (MAX_STR_SIZE - col))
+    }
+    function printChar(c, col, lin) {
+        ctx.fillText(c, column(col), line(lin));
+    }
+    function printString(str, col, lin) {
+        for (var i = 0; i < str.length; i++) {
+            var c = str[i];
+            printChar(c, col + i, lin)
+        }
+
+    }
+
+
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext('2d');
+
+
 
     const canvasFontStyle = '' + FONT_SIZE + 'px Monospace';
     // Clear the canvas
@@ -16,32 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx.textAlign = "right";
     ctx.fillStyle = '#000';
     ctx.font = canvasFontStyle;
-
-    {
-        var outputA = 'ABCD';
-        var col = 2;
-        ctx.fillText(formatOuput(outputA, col), column(col), line(1));
-    }
-    {
-        var outputB = 'AB';
-        var col = 2;
-        ctx.fillText(formatOuput(outputB, col), column(col), line(2));
-    }
+    printChar('A', 1, 2);
+    printString('Hello', 2, 1);
 });
-function formatOuput(str, col) {
-    var output = '';
-    for (var i = 0; i < col; i++) {
-        output += ' ';
-    }
-    output += str;
-    for (var i = 0; i < MAX_STR_SIZE - str.length; i++) {
-        output += ' ';
-    }
-    return output
-}
-function column(col) {
-    return START_HEIGHT + (FONT_WEIGHT * (col - 1))
-}
-function line(line) {
-    return START_WIDTH + (FONT_SIZE * (line - 1))
-}

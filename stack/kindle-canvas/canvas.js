@@ -22,11 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext('2d');
-
-
 
     const canvasFontStyle = '' + FONT_SIZE + 'px Monospace';
     // Clear the canvas
@@ -36,6 +33,19 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx.textAlign = "right";
     ctx.fillStyle = '#000';
     ctx.font = canvasFontStyle;
-    printChar('A', 1, 2);
-    printString('Hello', 2, 1);
+
+    /// BEGIN
+    // Print rulers
+    {
+        printString('000000000111111111122222222223333333', 3, 1);
+        printString('123456789012345678901234567890123456', 3, 2);
+        for (var i = 1; i < 20; i++) {
+            if (i < 10) {
+                printChar('0', 1, 2 + i);
+            }
+            printChar(i, 2, 2 + i);
+        }
+    }
+    printChar('A', 5 + 2, 5 + 2);
+    printString('Hello', 6 + 2, 6 + 2);
 });

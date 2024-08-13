@@ -7,4 +7,4 @@ Just testing out some old and new ideas.
 ![Kindle Monitor](/imgs/kindle-monitor.gif)
 
 
-[source-code](/stack/kindle-monitor/)
+[source-code](/archived-ideas/kindle-monitor/)

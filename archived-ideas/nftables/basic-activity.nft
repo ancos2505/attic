@@ -1,0 +1,9 @@
+table inet filter {
+	chain log_chain {
+		type filter hook prerouting priority filter; policy accept;
+		ct state new log prefix "[NFTABLES] NEW "
+		ct state established log prefix "[NFTABLES] ESTABLISHED "
+		ct state related log prefix "[NFTABLES] RELATED "
+		ct state invalid log prefix "[NFTABLES] INVALID "
+	}
+}

@@ -78,16 +78,15 @@ impl HttpServer {
     <title>Kindle Monitor</title>
 </head>
 <body>
-    <canvas id="myCanvas" width="1080" height="1230" style="border:1px solid #000000;">
+<canvas id="myCanvas" width="519" height="593" style="border:1px solid #000000;">
         Your browser does not support the HTML5 canvas tag.
     </canvas>
     <script>
-const START_WIDTH = 40;
-const START_HEIGHT = -5;
-const FONT_SIZE = 50;
-const FONT_WEIGHT = 33;
-
-const MAX_STR_SIZE = 37;
+        const START_WIDTH = 25;
+        const START_HEIGHT = -35;
+        const FONT_SIZE = 25;
+        const FONT_WEIGHT = 15;
+        const MAX_STR_SIZE = 36;
 document.addEventListener("DOMContentLoaded", function () {
     function line(line) {
         return START_WIDTH + (FONT_SIZE * (line - 1))
